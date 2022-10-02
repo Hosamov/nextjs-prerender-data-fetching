@@ -24,17 +24,17 @@ export async function getStaticProps(context) {
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
 
-  // if (!data) {
-  //   return {
-  //     redirect: {
-  //       destination: '/no-data',
-  //     }
-  //   }
-  // }
+  if (!data) {
+    return {
+      redirect: {
+        destination: '/no-data',
+      }
+    }
+  }
 
-  // if(data.products.length === 0) {
-  //   return { notFound: true }; // Render 404 error page
-  // }
+  if(data.products.length === 0) {
+    return { notFound: true }; // Render 404 error page
+  }
 
   return {
     props: {
